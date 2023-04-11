@@ -25,11 +25,13 @@ public class CryptoMarche {
      * @return capital en euros du propriÃ©tare.
      */
     public double capitalEnEuros(String proprietaire){
-        /**
-			FONCTION Ã€ IMPLEMENTER
-        **/
-
-        return 0;
+        double val = 0;
+        for (Portefeuille Enzo : portefeuilles){
+            if (Enzo.estProprietaire(proprietaire)){
+                val += Enzo.getMontant() * Enzo.getMonnaie().getValeurDeJeton();
+            }
+        }
+        return val;
     }
 
     /**
@@ -40,12 +42,13 @@ public class CryptoMarche {
      * @return capital total en circulation de la cryptomonnaie (en euros).
      */
     public double capitalMonneaie(Cryptomonnaie monnaie){
-        /**
-			FONCTION Ã€ IMPLEMENTER
-        **/
-
-        return 0;
-
+        double val = 0;
+        for (Portefeuille Enzo : portefeuilles){
+            if (Enzo.getMonnaie().getNom() == monnaie.getNom()){
+                val += Enzo.getMontant() * Enzo.getMonnaie().getValeurDeJeton();
+            }
+        }
+        return val;
     }
 
     @Override
